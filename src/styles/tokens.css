@@ -1,0 +1,21 @@
+:root {
+  --navy: #0b1c26;
+  --surface: #16303b;
+  --white: #edf6f1;
+  --muted: #aebfc4;
+  --mint: #93f0d2;
+  --border: #29414d;
+  --paper: #edf1eb;
+  --ink: #152e36;
+  --ink-muted: #4a6268;
+  --teal: #176b5e;
+  --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  color-scheme: dark;
+}
+dialog {
+  color-scheme: dark;
+}
+.services,
+.why {
+  color-scheme: light;
+}
