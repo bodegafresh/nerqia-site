@@ -230,3 +230,9 @@ El aviso de privacidad describe el borrador local, la apertura del cliente de co
 - [GitHub Pages: dominios personalizados](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site)
 
 Consulta `docs/DISENO_Y_ARQUITECTURA.md` y `docs/VALIDACION.md` para las decisiones de implementación y el alcance de las comprobaciones realizadas.
+
+## Identidad corporativa
+
+La marca se reconstruye desde la composición aprobada Horizontal B y la N compacta de cuatro nodos. Recursos en `public/brand/`, favicons e iconos en `public/`. Ver [manual de marca](docs/BRAND_GUIDELINES.md) y [validación visual](docs/BRAND_VALIDATION.md).
+
+`npm run brand:generate` regenera SVG/PNG/ICO desde una única geometría y los tokens existentes. `npm run brand:check` verifica que las salidas sean reproducibles y válidas; también se ejecuta en `npm run check` y se cubre con `npm test`.

@@ -1,9 +1,13 @@
 :root {
+  /* Brand palette: shared by UI and scripts/brand/generate.mjs. */
+  --petrol: #073b46;
+  --brand-white: #ffffff;
+  --black: #000000;
   --navy: #0b1c26;
   --surface: #16303b;
   --white: #edf6f1;
   --muted: #aebfc4;
-  --mint: #93f0d2;
+  --mint: #91ebcb;
   --border: #29414d;
   --paper: #edf1eb;
   --ink: #152e36;

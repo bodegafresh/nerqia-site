@@ -15,9 +15,7 @@ export function renderPage(locale: Locale) {
   const absolute = site.publicUrl
     ? `${site.publicUrl}/${locale === "en" ? "en/" : ""}`
     : "";
-  const image = site.publicUrl
-    ? `${site.publicUrl}/og-image${locale === "en" ? "-en" : ""}.png`
-    : "";
+  const image = site.publicUrl ? `${site.publicUrl}/og-image.png` : "";
   const meta = [
     `<title>${escape(text.seo.title)}</title>`,
     `<meta name="description" content="${escape(text.seo.description)}">`,
@@ -37,7 +35,8 @@ export function renderPage(locale: Locale) {
       `<meta property="og:image" content="${escape(image)}">`,
       '<meta property="og:image:width" content="1200">',
       '<meta property="og:image:height" content="630">',
-      `<meta property="og:image:alt" content="${escape(text.seo.title)}">`,
+      '<meta property="og:image:type" content="image/png">',
+      `<meta property="og:image:alt" content="${escape("NERQIA — Software · Intelligence · Automation")}">`,
       `<meta name="twitter:image" content="${escape(image)}">`,
     );
     for (const lang of ["es", "en"] as const)

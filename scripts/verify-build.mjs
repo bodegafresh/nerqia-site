@@ -52,13 +52,28 @@ for (const [locale, file] of [
   );
   assert(!form.hasAttribute("action"), "No external form endpoint");
   assert(document.querySelector('a[href^="mailto:"]'), "Direct email fallback");
+  for (const landmark of ["header", "footer"]) {
+    const link = document.querySelector(`${landmark} .brand-link`);
+    assert.equal(link?.getAttribute("href"), "#inicio");
+    assert.equal(link?.getAttribute("aria-label"), "NERQIA");
+    const logo = link?.querySelector("img");
+    assert.equal(
+      logo?.getAttribute("src"),
+      `${base}brand/logos/nerqia-logo-horizontal-dark.svg`,
+    );
+    assert.equal(logo?.getAttribute("alt"), "");
+    assert(
+      Number(logo?.getAttribute("width")) > 0 &&
+        Number(logo?.getAttribute("height")) > 0,
+    );
+  }
   for (const lang of ["es", "en"])
     assert.equal(
       document.querySelector(`header a[lang="${lang}"]`)?.getAttribute("href"),
       base + (lang === "en" ? "en/" : ""),
     );
   for (const node of document.querySelectorAll(
-    'script[src],link[rel="stylesheet"],link[rel="icon"]',
+    'script[src],link[rel="stylesheet"],link[rel="icon"],link[rel="apple-touch-icon"],img[src],svg image[href]',
   )) {
     const resource = node.getAttribute("src") || node.getAttribute("href");
     assert(
@@ -77,7 +92,7 @@ for (const [locale, file] of [
       document.querySelector('meta[property="og:url"]')?.content,
       canonical,
     );
-    const image = `${publicUrl}/og-image${locale === "en" ? "-en" : ""}.png`;
+    const image = `${publicUrl}/og-image.png`;
     assert.equal(
       document.querySelector('meta[property="og:image"]')?.content,
       image,
@@ -98,7 +113,7 @@ for (const [locale, file] of [
   } else assert.equal(document.querySelector('link[rel="canonical"]'), null);
 }
 assert.equal(new Set(titles).size, 2, "Localized titles must be distinct");
-for (const image of ["og-image.png", "og-image-en.png"])
+for (const image of ["og-image.png", "favicon.ico", "apple-touch-icon.png"])
   await access(`dist/${image}`);
 const robots = await readFile("dist/robots.txt", "utf8");
 if (publicUrl) {

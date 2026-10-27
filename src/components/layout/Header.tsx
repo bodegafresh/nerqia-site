@@ -1,5 +1,6 @@
 import { useRef } from "react";
-import { Brand, Icon } from "../ui/Icon";
+import { Icon } from "../ui/Icon";
+import { BrandLogo } from "../ui/BrandLogo";
 import { localeHref, type Locale } from "../../config/site";
 import type { Copy } from "../../content/copy";
 
@@ -50,7 +51,7 @@ export function Header({
     <header className="header">
       <div className="container header-inner">
         <a href="#inicio" aria-label="NERQIA" className="brand-link">
-          <Brand />
+          <BrandLogo decorative />
         </a>
         <nav className="desktop-nav" aria-label={text.navLabel}>
           {links}
@@ -83,7 +84,7 @@ export function Header({
         >
           <div className="mobile-sheet">
             <div className="mobile-sheet-top">
-              <Brand />
+              <BrandLogo />
               <button
                 type="button"
                 className="icon-button"

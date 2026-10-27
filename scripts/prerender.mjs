@@ -2,8 +2,10 @@ import { build } from "vite";
 import { readFile, writeFile, mkdir, rm } from "node:fs/promises";
 import { pathToFileURL } from "node:url";
 import path from "node:path";
+import { readColorTokens } from "./brand/tokens.mjs";
 
 const template = await readFile("dist/index.html", "utf8");
+const color = await readColorTokens();
 try {
   await build({
     build: {
@@ -47,7 +49,7 @@ try {
   await writeFile("dist/.nojekyll", "");
   await writeFile(
     "dist/404.html",
-    `<!doctype html><html lang="es-CL"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><meta name="robots" content="noindex"><title>404 | NERQIA</title><body style="background:#0b1c26;color:#edf6f1;font-family:system-ui;padding:10vw"><p>NERQIA</p><h1>Página no encontrada / Page not found</h1><p><a style="color:#93f0d2" href="${escapeXml(basePath)}">Volver al inicio / Back to home →</a></p></body></html>`,
+    `<!doctype html><html lang="es-CL"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><meta name="robots" content="noindex"><title>404 | NERQIA</title><body style="background:${color("navy")};color:${color("white")};font-family:system-ui;padding:10vw"><p>NERQIA</p><h1>Página no encontrada / Page not found</h1><p><a style="color:${color("mint")}" href="${escapeXml(basePath)}">Volver al inicio / Back to home →</a></p></body></html>`,
   );
 } finally {
   await rm(".prerender", { recursive: true, force: true });

@@ -1,3 +1,4 @@
+import { brandAsset } from "../../config/brand";
 import type { Copy } from "../../content/copy";
 export function Network({
   labels,
@@ -19,7 +20,7 @@ export function Network({
             y2="440"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stopColor="#93f0d2" />
+            <stop stopColor="var(--mint)" />
             <stop offset="1" stopColor="#458cb5" />
           </linearGradient>
           <radialGradient id="core">
@@ -50,7 +51,7 @@ export function Network({
             opacity=".25"
           />
         </g>
-        <g className="orbit-dots" fill="#93f0d2">
+        <g className="orbit-dots" fill="var(--mint)">
           <circle cx="270" cy="70" r="3" />
           <circle cx="460" cy="260" r="3" />
           <circle cx="270" cy="450" r="3" />
@@ -71,13 +72,14 @@ export function Network({
           stroke="#6cccb6"
         />
         <path d="m270 184 67 39v75l-67 38-67-38v-75Z" stroke="#315e61" />
-        <path
-          d="M239 289v-58h13l36 58h13v-58"
-          stroke="#e4fbf3"
-          strokeWidth="8"
+        <image
+          href={brandAsset("compact", "dark")}
+          x="230"
+          y="220"
+          width="80"
+          height="80"
         />
-        <circle cx="301" cy="228" r="7" fill="#93f0d2" />
-        <g fill="#93f0d2">
+        <g fill="var(--mint)">
           <circle cx="165" cy="157" r="3" />
           <circle cx="413" cy="201" r="3" />
           <circle cx="375" cy="362" r="3" />
