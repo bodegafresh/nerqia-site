@@ -29,10 +29,16 @@ describe("NERQIA institutional site", () => {
         ).toBeVisible();
       for (const item of text.process.items)
         expect(screen.getByRole("heading", { name: item.title })).toBeVisible();
-      for (const product of Object.values(text.innovation.products))
+      for (const example of text.examples.items)
         expect(
-          screen.getByRole("heading", { name: product.title }),
+          screen.getByRole("heading", { name: example.title }),
         ).toBeVisible();
+      for (const problem of text.problems.items)
+        expect(
+          screen.getByRole("heading", { name: problem.title }),
+        ).toBeVisible();
+      expect(screen.queryByText("Match Alpha")).not.toBeInTheDocument();
+      expect(screen.queryByText("Galactic Explorer")).not.toBeInTheDocument();
       for (const anchor of container.querySelectorAll<HTMLAnchorElement>(
         'a[href^="#"]',
       )) {
@@ -40,10 +46,13 @@ describe("NERQIA institutional site", () => {
           container.querySelector(anchor.getAttribute("href")!),
         ).not.toBeNull();
       }
-      expect(screen.queryByRole("form")).not.toBeInTheDocument();
-      const contact =
-        container.querySelector<HTMLAnchorElement>("#contacto a.button")!;
-      expect(contact.href).toBe(getContactHref(text.contact.subject));
+      expect(
+        screen.getByRole("form", { name: text.contact.form.title }),
+      ).toBeInTheDocument();
+      const contact = container.querySelector<HTMLAnchorElement>(
+        "#contacto .contact-email",
+      )!;
+      expect(contact.href).toBe(getContactHref(text.contactSubject));
     },
   );
   it("uses real localized URLs in the language selector", () => {
@@ -72,13 +81,29 @@ describe("NERQIA institutional site", () => {
     ).toHaveAttribute("aria-current", "page");
   });
   it("removes hidden products and associated navigation", () => {
-    const { container } = render(<App locale="es" products={[]} />);
+    const { container } = render(<App locale="es" />);
+    expect(visibleProducts()).toEqual([]);
     expect(screen.queryByText("Match Alpha")).not.toBeInTheDocument();
     expect(container.querySelector("#innovacion")).not.toBeInTheDocument();
     expect(
       container.querySelector('a[href="#innovacion"]'),
     ).not.toBeInTheDocument();
   });
+  it.each(["es", "en"] as const)(
+    "can show both retained products in %s when approved",
+    (locale) => {
+      const { container } = render(
+        <App locale={locale} products={["match-alpha", "galactic-explorer"]} />,
+      );
+      expect(
+        screen.getByRole("heading", { name: "Match Alpha" }),
+      ).toBeVisible();
+      expect(
+        screen.getByRole("heading", { name: "Galactic Explorer" }),
+      ).toBeVisible();
+      expect(container.querySelector('a[href="#innovacion"]')).not.toBeNull();
+    },
+  );
   it("supports publishing only one configured product", () => {
     render(<App locale="es" products={["match-alpha"]} />);
     expect(screen.getByText("Match Alpha")).toBeInTheDocument();

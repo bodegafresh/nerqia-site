@@ -1,58 +1,54 @@
-# Registro de validación
+# Validación de NERQIA V1.1
 
-Fecha: 26 de octubre de 2026.
+Fecha: 26 de octubre de 2026. Base inspeccionada: `main`, commit `82f74e219bd90ed8d0755b4b675d2077eec0fa71`. La línea base pasó sus 13 pruebas antes de editar.
 
-## Comprobaciones ejecutadas
+## Automatización ejecutada
 
-| Comprobación                                                       | Resultado                                                      |
-| ------------------------------------------------------------------ | -------------------------------------------------------------- |
-| ESLint con `--max-warnings 0`                                      | Correcto                                                       |
-| TypeScript `tsc --noEmit`                                          | Correcto                                                       |
-| Vitest + Testing Library                                           | 13 pruebas correctas, 2 archivos                               |
-| Build de producción en raíz                                        | Correcto                                                       |
-| Build de producción con prefijo `/nerqia/` y URL pública de prueba | Correcto                                                       |
-| HTML prerenderizado ES/EN                                          | Verificado en build y navegador                                |
-| Hidratación de HTML en ambos idiomas                               | 2 pruebas específicas correctas, conserva los nodos existentes |
-| Enlaces internos y sus destinos                                    | Sin anclas rotas en el HTML generado                           |
-| Correo y asuntos con caracteres especiales                         | Verificados                                                    |
-| Recursos JS, CSS, favicon e imagen social                          | Verificados contra los archivos de salida                      |
-| Canonical, alternates, sitemap y robots con URL configurada        | Generados en compilación con subruta                           |
-| Compilación sin URL pública                                        | Omite direcciones supuestas y sitemap; robots válido           |
-| Script de instalación                                              | Sintaxis Bash comprobada                                       |
+| Comprobación                                        | Resultado                              |
+| --------------------------------------------------- | -------------------------------------- |
+| `npm ci` con el lockfile existente                  | Correcto; sin dependencias nuevas      |
+| `npm run lint`                                      | Correcto, cero advertencias            |
+| `npm run typecheck`                                 | Correcto                               |
+| `npm test`                                          | 30 pruebas correctas en 3 archivos     |
+| `npm run build` en raíz, sin URL pública            | Correcto; no publica URLs supuestas    |
+| `npm run check`                                     | Correcto: lint, tipos, pruebas y build |
+| Build con la URL de Pages y prefijo `/nerqia-site/` | Correcto                               |
+| `git diff --check`                                  | Correcto                               |
 
-Las pruebas cubren secciones principales, ambos idiomas, rutas del selector, contacto, navegación, apertura y cierre de diálogos, productos ocultos o individuales y compatibilidad con subrutas.
+La última compilación valida directamente `dist`: un H1 y un título por idioma, `lang`, descripciones, Open Graph, Twitter Cards, canonical, alternates `hreflang`, rutas de idioma, favicon, JS/CSS y anclas. Con URL pública también verifica sitemap y robots; sin URL omite sitemap y canonical.
 
-## Revisión en navegador
+Las pruebas cubren contenido institucional y ejemplos ES/EN, productos ocultos de forma predeterminada, activación individual o conjunta, menú, privacidad e hidratación. El contacto añade validaciones, foco en errores, borrador completo, normalización CRLF, Unicode y caracteres reservados, descarte del borrador obsoleto, borrado, copia autorizada y copia manual ante rechazo del portapapeles. Los borradores largos conservan el texto y omiten el enlace `mailto:` potencialmente incompatible. También se verifica que preparar el borrador no llame a `fetch` ni escriba en almacenamiento local.
 
-Se utilizó una previsualización HTTP del build estático. Las vistas responsive se revisaron mediante marcos de ancho fijo, sin depender de un teléfono físico:
+El formulario está deshabilitado en el HTML estático y se habilita al conectar JavaScript. Una prueba y la verificación de build cubren esta protección frente a un envío GET nativo sin manejador.
 
-- Escritorio: 1280 px; también se revisó la portada en un viewport de escritorio mayor.
-- Tablet: 768 px.
-- Móvil: 390 px.
-- Móvil angosto: 320 px, en español y en inglés.
+## Navegador y responsive
 
-No se detectó desbordamiento horizontal del documento en los anchos comprobados. El ancho de contenido resulta ligeramente menor por la barra de desplazamiento del navegador.
+Se revisó el build estático en Chrome mediante marcos de anchos nominales **320, 360, 390, 768, 1024 y 1440 px**, en español e inglés. El viewport interno descuenta la barra de desplazamiento. En los 12 casos el ancho de contenido coincidió con el viewport, sin desbordamiento horizontal, y no apareció la sección de productos.
 
-El menú móvil abre como diálogo modal. Escape lo cierra y devuelve el foco al botón de apertura. El aviso de privacidad abre y muestra el contenido correspondiente. Los enlaces de idioma y correo conservan el prefijo de publicación.
+Se inspeccionaron portada, problemas, servicios, formulario y borrador. El formulario en móvil muestra errores, enfoca el primer campo inválido, prepara y copia el mensaje, y borra los datos de prueba. Se verificó el orden de tabulación Nombre → Correo en escritorio. El menú móvil enfoca su cierre al abrir, permite tabular a la navegación, cierra con Escape y devuelve el foco al botón de apertura.
 
-Se revisaron los colores computados de 119 elementos con texto en la vista de escritorio: ninguno quedó bajo el umbral AA aplicable a su tamaño, comparando texto con la superficie opaca de su sección. Esto no equivale a una auditoría completa de accesibilidad. Los SVG decorativos se excluyeron de esa comprobación.
+Se revisaron los colores computados de **142 elementos con texto** en la vista de escritorio, sin resultados bajo el contraste AA correspondiente a su tamaño. Es una comprobación de texto contra superficies opacas, no una certificación ni una auditoría completa de WCAG 2.2. Los controles tienen bordes distinguibles, etiquetas, errores asociados y foco visible; el CSS conserva reducción de movimiento.
 
-La consola de la compilación de producción no registró errores de los recursos de la aplicación durante estas comprobaciones. Se descartaron mensajes propios de la extensión del entorno de revisión. La revisión detectó y corrigió un arranque de hidratación innecesario en desarrollo cuando el contenedor solo tenía el comentario de plantilla.
+No se registraron errores de los recursos de la aplicación en la consola durante las revisiones de producción. Se excluyeron mensajes de la extensión del entorno de pruebas.
 
-## Alcance y límites
+## Tamaño y límites
 
-- Los clics automáticos sobre enlaces de ancla se restringieron en el navegador de revisión; sus destinos y la estructura de navegación se validaron mediante pruebas y análisis del HTML generado.
-- No se ejecutó Lighthouse ni se atribuyen puntuaciones de rendimiento.
-- No se ejecutaron Safari, Firefox ni pruebas en dispositivos físicos.
-- El workflow de GitHub Actions está preparado, pero su despliegue remoto se verificará cuando el propietario suba el proyecto y habilite GitHub Pages en el repositorio real.
-- No se ha registrado una marca, contratado un dominio ni añadido servicios comerciales.
+La compilación para Pages produjo aproximadamente **82,51 kB gzip de JavaScript** y **6,18 kB gzip de CSS**. Frente a la línea base, el aumento es de unos 4,3 kB y 1,1 kB respectivamente. No cambió el lockfile ni se añadieron bibliotecas.
 
-## Volver a verificar
+- No hay Lighthouse instalado en este entorno; no se atribuyen puntuaciones.
+- No se probaron Safari, Firefox ni dispositivos físicos.
+- La navegación por anclas se comprueba por sus destinos y las pruebas; el automatizador restringió ese tipo de clic durante la revisión inicial.
+- No se enviaron correos reales. `mailto:` depende del cliente y no confirma entrega; la copia manual es una alternativa disponible.
+- El pipeline se conserva y la ejecución remota se consulta en el PR. No se habilita auto-merge, no se fusiona ni se despliega manualmente.
+- El aviso de privacidad describe las funciones reales; no representa una revisión jurídica ni una afirmación de cumplimiento integral.
+
+## Reproducir
 
 ```bash
 npm ci
 npm run check
+VITE_SITE_URL=https://bodegafresh.github.io/nerqia-site VITE_BASE_PATH=/nerqia-site/ npm run build
 npm run preview
 ```
 
-Después, revisa portada, servicios, contacto y diálogos a distintos anchos. Abre `/en/` para comprobar también el contenido inglés. Antes de publicar manualmente, configura la URL pública real como indica el README.
+Revisa ambas páginas y el formulario a los anchos indicados, incluyendo datos inválidos, borrador, copia y borrado. El enlace de correo permanece disponible sin el formulario.

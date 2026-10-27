@@ -2,6 +2,7 @@ import { site, getContactHref, type ProductId } from "../../config/site";
 import type { Copy } from "../../content/copy";
 import { Icon } from "../ui/Icon";
 import { Network } from "../ui/Network";
+import { ContactForm } from "./ContactForm";
 import { SectionHeading } from "../ui/SectionHeading";
 
 export function Hero({ text }: { text: Copy }) {
@@ -70,7 +71,7 @@ export function Services({ text }: { text: Copy }) {
         </div>
         <div className="service-grid">
           {text.services.items.map((item, i) => (
-            <article className="service" key={item.title}>
+            <article id={item.id} className="service" key={item.title}>
               <div className="service-top">
                 <Icon name={item.icon} width="34" height="34" />
                 <span>{String(i + 1).padStart(2, "0")}</span>
@@ -275,10 +276,6 @@ export function Contact({ text }: { text: Copy }) {
             <span>{text.contact.accent}</span>
           </h2>
           <p>{text.contact.description}</p>
-          <a className="button" href={getContactHref(text.contact.subject)}>
-            {text.contact.action}
-            <Icon name="diagonal" />
-          </a>
           <p className="contact-hint">{text.contact.hint}</p>
           <a
             href={getContactHref(text.contactSubject)}
@@ -288,6 +285,7 @@ export function Contact({ text }: { text: Copy }) {
             <Icon name="arrow" width="18" />
           </a>
         </div>
+        <ContactForm text={text.contact} />
       </div>
     </section>
   );

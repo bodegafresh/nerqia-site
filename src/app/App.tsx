@@ -6,6 +6,7 @@ import {
 } from "../config/site";
 import { copy } from "../content/copy";
 import { Header } from "../components/layout/Header";
+import { Problems, Examples } from "../components/sections/PracticalSolutions";
 import { Footer } from "../components/layout/Footer";
 import {
   Hero,
@@ -37,8 +38,10 @@ export function App({
       />
       <main id="contenido" tabIndex={-1}>
         <Hero text={text} />
+        <Problems text={text} />
         <Services text={text} />
         <Audience text={text} />
+        <Examples text={text} />
         <Process text={text} />
         <Innovation text={text} products={products} />
         <Why text={text} />

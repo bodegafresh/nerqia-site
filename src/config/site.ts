@@ -12,7 +12,8 @@ export const site = {
   socials: [] as { label: string; href: string }[],
   products: {
     enabled: true,
-    visible: ["match-alpha", "galactic-explorer"] as ProductId[],
+    // Individual opt-in: add an approved product ID to publish it.
+    visible: [] as ProductId[],
   },
 };
 
