@@ -152,24 +152,16 @@ section[id] {
   align-items: center;
   gap: 24px;
 }
-.brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 11px;
-  font-size: 27px;
-  letter-spacing: 1.8px;
-  font-weight: 700;
-  line-height: 1;
-}
-.brand-dot {
-  color: var(--mint);
-}
-.brand-symbol {
-  width: 28px;
-  height: 28px;
+.brand-logo {
+  display: block;
+  flex-shrink: 0;
+  height: auto;
+  max-width: 100%;
 }
 .brand-link {
-  display: flex;
+  display: inline-flex;
+  flex-shrink: 0;
+  border-radius: 2px;
 }
 .desktop-nav {
   display: flex;
@@ -856,8 +848,8 @@ section[id] {
   align-items: flex-start;
   padding-bottom: 45px;
 }
-.footer .brand {
-  font-size: 23px;
+.footer .brand-logo {
+  width: 176px;
 }
 .brand-descriptor {
   font: 9px/1.8 var(--mono);
@@ -1295,8 +1287,8 @@ section[id] {
   .network-label {
     font-size: 8px;
   }
-  .header .brand {
-    font-size: 23px;
+  .header .brand-logo {
+    width: 168px;
   }
   .audience-card {
     padding: 24px;
@@ -1468,13 +1460,8 @@ section[id] {
   .header-inner {
     gap: 13px;
   }
-  .header .brand {
-    font-size: 22px;
-    gap: 8px;
-  }
-  .brand-symbol {
-    width: 24px;
-    height: 24px;
+  .header .brand-logo {
+    width: 148px;
   }
   .header-actions {
     gap: 0;

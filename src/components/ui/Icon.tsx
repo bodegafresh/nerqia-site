@@ -33,25 +33,3 @@ export function Icon({
     </svg>
   );
 }
-export function Brand({ compact = false }: { compact?: boolean }) {
-  return (
-    <span className="brand">
-      <svg
-        className="brand-symbol"
-        width="30"
-        height="30"
-        viewBox="0 0 32 32"
-        fill="none"
-        aria-hidden="true"
-      >
-        <path d="M4 27V5h5l14 22h5V5" stroke="currentColor" strokeWidth="4" />
-        <circle cx="28" cy="4" r="3" fill="var(--mint)" />
-      </svg>
-      {!compact && (
-        <span>
-          NERQIA<span className="brand-dot">.</span>
-        </span>
-      )}
-    </span>
-  );
-}

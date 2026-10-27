@@ -52,3 +52,7 @@ npm run preview
 ```
 
 Revisa ambas páginas y el formulario a los anchos indicados, incluyendo datos inválidos, borrador, copia y borrado. El enlace de correo permanece disponible sin el formulario.
+
+## Actualización de identidad V1.0
+
+La revisión de marca parte del `main` que integra V1.1 y conserva sus 30 pruebas. La suite pasa a 40 pruebas en cuatro archivos. Ver [BRAND_VALIDATION.md](BRAND_VALIDATION.md) para integridad SVG/PNG/ICO, generación reproducible, rutas de Pages, revisión responsive y capturas comparativas.

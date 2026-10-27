@@ -35,3 +35,7 @@ El proyecto puede extenderse con páginas de servicios, productos o contenidos m
 La hidratación habilita los controles después de conectar el manejador; antes de eso permanecen deshabilitados y el correo directo sigue operativo. Los datos no forman parte del HTML estático ni del sitemap. Sustituir el borrador por entrega transaccional requiere definir un servicio receptor, validar en servidor, manejar errores y revisar privacidad, sin exponer credenciales al navegador.
 
 Mantén el lockfile versionado. Ejecuta `npm run check` al modificar dependencias o contenido y revisa visualmente ambos idiomas. Las acciones de GitHub están fijadas por commit; su actualización debe revisarse junto con el pipeline. El workflow existente se conserva: los PR validan y únicamente `main` puede desplegar. Esta iteración se entrega mediante PR; no modifica ajustes del repositorio, permisos, secretos ni hosting.
+
+## Identidad V1.0
+
+`BrandLogo` reemplaza la marca provisional y referencia SVG generados desde `scripts/brand/geometry.mjs`. `src/config/brand.ts` centraliza proporciones y rutas bajo `BASE_URL`; `scripts/brand/tokens.mjs` lee la paleta del CSS existente para el generador y la página 404. Los PNG/ICO son salidas reproducibles con resvg como herramienta de desarrollo. Los detalles de geometría, usos, variantes y regeneración están en [BRAND_GUIDELINES.md](BRAND_GUIDELINES.md); la evidencia de QA está en [BRAND_VALIDATION.md](BRAND_VALIDATION.md).

@@ -1,5 +1,6 @@
 import { useRef } from "react";
-import { Brand, Icon } from "../ui/Icon";
+import { Icon } from "../ui/Icon";
+import { BrandLogo } from "../ui/BrandLogo";
 import { site, getContactHref } from "../../config/site";
 import type { Copy } from "../../content/copy";
 export function Footer({
@@ -15,8 +16,8 @@ export function Footer({
       <div className="container">
         <div className="footer-main">
           <div>
-            <a href="#inicio" aria-label="NERQIA">
-              <Brand />
+            <a href="#inicio" aria-label="NERQIA" className="brand-link">
+              <BrandLogo decorative />
             </a>
             <p className="brand-descriptor">{site.descriptor}</p>
             <p className="footer-note">{text.footer.note}</p>

@@ -14,8 +14,10 @@
     "test:watch": "vitest",
     "build": "tsc --noEmit && vite build && node scripts/prerender.mjs && node scripts/verify-build.mjs",
     "preview": "vite preview --host 0.0.0.0",
-    "check": "npm run lint && npm run typecheck && npm test && npm run build",
-    "format": "prettier --write ."
+    "check": "npm run brand:check && npm run lint && npm run typecheck && npm test && npm run build",
+    "format": "prettier --write .",
+    "brand:generate": "node scripts/brand/generate.mjs",
+    "brand:check": "node scripts/brand/generate.mjs --check && node scripts/brand/verify.mjs"
   },
   "dependencies": {
     "react": "^19.2.0",
@@ -23,6 +25,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.0",
+    "@resvg/resvg-js": "2.6.2",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
