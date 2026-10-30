@@ -9,7 +9,20 @@ export const site = {
   publicUrl: import.meta.env.VITE_SITE_URL?.replace(/\/+$/, "") || "",
   basePath: import.meta.env.BASE_URL || "/",
   // Add only real, public HTTPS profiles. Example shape: { label, href }.
-  socials: [] as { label: string; href: string }[],
+  socials: [
+    {
+      label: "TikTok",
+      href: "https://www.tiktok.com/@nerqiaspa",
+    },
+    {
+      label: "Instagram",
+      href: "https://www.instagram.com/nerqiaspa/",
+    },
+    {
+      label: "Facebook",
+      href: "https://www.facebook.com/people/Nerqia/61596034349355/",
+    },
+  ] as { label: string; href: string }[],
   products: {
     enabled: true,
     // Individual opt-in: add an approved product ID to publish it.
