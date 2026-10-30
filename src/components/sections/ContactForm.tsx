@@ -28,8 +28,14 @@ export function ContactForm({ text }: { text: Copy["contact"] }) {
   const form = useRef<HTMLFormElement>(null);
   const preview = useRef<HTMLTextAreaElement>(null);
   const previewTitle = useRef<HTMLHeadingElement>(null);
+  const previewFocusFrame = useRef<number | null>(null);
 
   function update(key: keyof ContactFields, value: string) {
+    if (previewFocusFrame.current !== null) {
+      cancelAnimationFrame(previewFocusFrame.current);
+      previewFocusFrame.current = null;
+    }
+
     setFields((previous) => ({ ...previous, [key]: value }));
     setErrors((previous) => ({ ...previous, [key]: undefined }));
     setDraft(null);
@@ -47,19 +53,39 @@ export function ContactForm({ text }: { text: Copy["contact"] }) {
     }
     setDraft(buildContactDraft(fields, text));
     // Wait until React commits the preview; focus the heading without scrolling away from the context.
-    requestAnimationFrame(() => previewTitle.current?.focus());
+    if (previewFocusFrame.current !== null) {
+      cancelAnimationFrame(previewFocusFrame.current);
+    }
+
+    previewFocusFrame.current = requestAnimationFrame(() => {
+      previewFocusFrame.current = null;
+      previewTitle.current?.focus({ preventScroll: true });
+    });
   }
   async function copy() {
     if (!draft) return;
+
+    if (previewFocusFrame.current !== null) {
+      cancelAnimationFrame(previewFocusFrame.current);
+      previewFocusFrame.current = null;
+    }
+
     try {
-      if (!navigator.clipboard?.writeText)
+      if (!navigator.clipboard?.writeText) {
         throw new Error("Clipboard unavailable");
+      }
+
       await navigator.clipboard.writeText(draft.message);
       setStatus(labels.copied);
     } catch {
       setStatus(labels.manual);
-      preview.current?.focus();
-      preview.current?.select();
+
+      const textarea = preview.current;
+
+      if (textarea) {
+        textarea.focus({ preventScroll: true });
+        textarea.select();
+      }
     }
   }
   function clear() {

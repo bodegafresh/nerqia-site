@@ -98,13 +98,25 @@ describe("local contact draft", () => {
   it("invalidates an old draft as soon as a field is changed", async () => {
     const user = userEvent.setup();
     const text = copy.es.contact;
+
     render(<ContactForm text={text} />);
     fill();
-    await user.click(screen.getByRole("button", { name: text.form.prepare }));
-    await user.type(screen.getByLabelText(text.form.name), " López");
+
+    await user.click(
+      screen.getByRole("button", { name: text.form.prepare }),
+    );
+
+    const nameInput = screen.getByLabelText(text.form.name);
+
+    await user.click(nameInput);
+    await user.type(nameInput, " López");
+
+    expect(nameInput).toHaveValue("Ana Pérez López");
+
     expect(
       screen.queryByRole("textbox", { name: text.form.preview }),
     ).not.toBeInTheDocument();
+
     expect(
       screen.queryByRole("link", { name: text.form.open }),
     ).not.toBeInTheDocument();
