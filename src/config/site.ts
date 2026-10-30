@@ -5,7 +5,7 @@ export const site = {
   name: "NERQIA",
   legalName: "NERQIA SpA",
   descriptor: "Software · Intelligence · Automation",
-  email: "consultas@nerqiaspa.com",
+  email: "contacto@nerqiaspa.com",
   publicUrl: import.meta.env.VITE_SITE_URL?.replace(/\/+$/, "") || "",
   basePath: import.meta.env.BASE_URL || "/",
   // Add only real, public HTTPS profiles. Example shape: { label, href }.
