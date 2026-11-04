@@ -50,7 +50,14 @@ export function Examples({ text }: { text: Copy }) {
               <Icon name={item.icon} width="28" height="28" />
               <div>
                 <h3>{item.title}</h3>
-                <p>{item.description}</p>
+                <dl className="example-transformation">
+                  {(["before", "solution", "outcome"] as const).map((stage) => (
+                    <div key={stage}>
+                      <dt>{text.examples.labels[stage]}</dt>
+                      <dd>{item[stage]}</dd>
+                    </div>
+                  ))}
+                </dl>
               </div>
             </article>
           ))}

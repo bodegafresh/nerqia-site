@@ -1,5 +1,6 @@
 export type Locale = "es" | "en";
 export type ProductId = "match-alpha" | "galactic-explorer";
+export type SocialPlatform = "instagram" | "facebook" | "tiktok";
 
 export const site = {
   name: "NERQIA",
@@ -8,21 +9,24 @@ export const site = {
   email: "contacto@nerqiaspa.com",
   publicUrl: import.meta.env.VITE_SITE_URL?.replace(/\/+$/, "") || "",
   basePath: import.meta.env.BASE_URL || "/",
-  // Add only real, public HTTPS profiles. Example shape: { label, href }.
+  // Corporate profiles: keep URLs centralized here.
   socials: [
     {
+      id: "tiktok",
       label: "TikTok",
       href: "https://www.tiktok.com/@nerqiaspa",
     },
     {
+      id: "instagram",
       label: "Instagram",
       href: "https://www.instagram.com/nerqiaspa/",
     },
     {
+      id: "facebook",
       label: "Facebook",
       href: "https://www.facebook.com/people/Nerqia/61596034349355/",
     },
-  ] as { label: string; href: string }[],
+  ] as { id: SocialPlatform; label: string; href: string }[],
   products: {
     enabled: true,
     // Individual opt-in: add an approved product ID to publish it.

@@ -1,6 +1,6 @@
 # NERQIA — Tecnología que trabaja para ti.
 
-Sitio institucional de **NERQIA SpA**, compatible con GitHub Pages. La iteración V1.1 conserva la identidad original y añade problemas cotidianos, ejemplos de soluciones posibles y un contacto con borrador revisable. Español de Chile e inglés mantienen paridad de contenido y funcionamiento.
+Sitio institucional de **NERQIA SpA**, compatible con GitHub Pages. La iteración V1.2 añade significado y propósito de marca, ejemplos antes/solución/después y redes corporativas con iconos locales sobre las mejoras de V1.1. Conserva la identidad oficial y el contacto con borrador revisable. Español de Chile e inglés mantienen paridad de contenido y funcionamiento.
 
 ## Inicio rápido
 
@@ -132,7 +132,7 @@ Edita `src/config/site.ts`:
 
 - `name`, `legalName` y `descriptor`: identidad de empresa.
 - `email`: cambia el correo una sola vez; se actualizan todos los enlaces `mailto:`.
-- `socials`: lista de perfiles reales con `{ label, href }`. Mientras esté vacía no aparecen enlaces sociales.
+- `socials`: lista de perfiles corporativos con `{ id, label, href }`. `id` identifica el SVG local (`instagram`, `facebook` o `tiktok`); las URLs se declaran solo aquí. Mientras esté vacía no aparece el bloque social.
 
 Los asuntos de los correos están traducidos y codificados para conservar tildes, espacios y signos. El navegador abre la aplicación de correo del visitante; el sitio no simula el envío.
 
@@ -179,7 +179,7 @@ Para incorporar posteriormente envío transaccional real, reemplaza solo el adap
 
 `src/styles/tokens.css` centraliza colores. `src/styles/index.css` contiene layout, puntos de adaptación, foco visible, impresión y `prefers-reduced-motion`. Se utilizan tipografías del sistema para evitar solicitudes a Google Fonts o a otra CDN.
 
-Los SVG de marca y diagramas son originales y editables. El logotipo es provisional; este proyecto no acredita su registro como marca. Las imágenes Open Graph en `public/` se incluyen en PNG y SVG editable; si cambias la marca, actualiza ambas versiones e idiomas con tu editor habitual.
+La identidad oficial y sus variantes se documentan en `docs/BRAND_GUIDELINES.md`. Los SVG de marca y diagramas son editables; los recursos de marca se regeneran con `npm run brand:generate`. La imagen Open Graph se comparte entre ambos idiomas, con PNG en `public/og-image.png` y fuente SVG en `public/brand/social/og-image.svg`.
 
 ## Dominio propio
 
@@ -236,3 +236,7 @@ Consulta `docs/DISENO_Y_ARQUITECTURA.md` y `docs/VALIDACION.md` para las decisio
 La marca se reconstruye desde la composición aprobada Horizontal B y la N compacta de cuatro nodos. Recursos en `public/brand/`, favicons e iconos en `public/`. Ver [manual de marca](docs/BRAND_GUIDELINES.md) y [validación visual](docs/BRAND_VALIDATION.md).
 
 `npm run brand:generate` regenera SVG/PNG/ICO desde una única geometría y los tokens existentes. `npm run brand:check` verifica que las salidas sean reproducibles y válidas; también se ejecuta en `npm run check` y se cubre con `npm test`.
+
+## Comunicación V1.2
+
+La historia de marca se integra en los valores existentes; las cuatro tarjetas de ejemplos distinguen situación, posible solución y resultado esperado. El contacto acepta consultas de orientación y sigue preparando únicamente un borrador local. El footer conserva los perfiles corporativos configurados y añade SVG locales de Instagram, Facebook y TikTok con nombres accesibles en ES/EN. Ver [diagnóstico y validación](docs/V1_2_VALIDATION.md), incluida la procedencia y licencia de los iconos.

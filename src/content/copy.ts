@@ -5,7 +5,7 @@ const es = {
   seo: {
     title: "NERQIA | Tecnología que trabaja para ti",
     description:
-      "Software a medida, automatización, datos e inteligencia artificial. NERQIA diseña soluciones prácticas para personas, negocios y organizaciones.",
+      "Empresa chilena de tecnología e innovación: software a medida, automatización, datos e inteligencia artificial para personas, negocios y organizaciones.",
   },
   skip: "Ir al contenido",
   navLabel: "Navegación principal",
@@ -20,7 +20,7 @@ const es = {
     { id: "innovacion", label: "Innovación" },
   ],
   talk: "Conversemos",
-  contactSubject: "Conversemos sobre mi proyecto | NERQIA",
+  contactSubject: "Conversemos sobre mi idea o consulta | NERQIA",
   hero: {
     eyebrow: "INGENIERÍA CON PROPÓSITO",
     first: "Tecnología",
@@ -29,7 +29,7 @@ const es = {
     description:
       "Creamos software, conectamos herramientas y automatizamos tareas para personas y negocios. Tecnología e inteligencia artificial aplicadas a lo que necesitas resolver.",
     primary: "Explorar soluciones",
-    secondary: "Hablemos de tu proyecto",
+    secondary: "Cuéntanos tu idea",
     foot: "Del primer problema a la siguiente posibilidad.",
     graphic: ["DATOS", "PROCESOS", "INTELIGENCIA", "SOLUCIONES"],
     graphicFoot: "Conectar. Simplificar. Avanzar.",
@@ -82,30 +82,51 @@ const es = {
     intro:
       "Estos son ejemplos de lo que podemos construir para tu caso, no proyectos ya entregados.",
     cta: "Conversemos sobre tu caso",
+    labels: {
+      before: "Antes",
+      solution: "Posible solución",
+      outcome: "Después esperado",
+    },
     items: [
       {
         icon: "spark",
         title: "Alertas y notificaciones automáticas",
-        description:
-          "Recibe un aviso cuando ocurra algo relevante: un cambio, un plazo o un proceso que requiere atención.",
+        before:
+          "Un profesional lleva fechas, tareas y solicitudes entre mensajes y notas.",
+        solution:
+          "Un seguimiento sencillo con avisos para lo que requiere atención.",
+        outcome:
+          "Recordatorios oportunos y un registro organizado de lo pendiente.",
       },
       {
         icon: "flow",
         title: "Reportes y planillas sin tareas repetidas",
-        description:
-          "Reúne, procesa y actualiza información para preparar tus reportes con menos trabajo manual.",
+        before:
+          "Una librería revisa ventas e inventario entre su sistema de venta y varias planillas.",
+        solution:
+          "Conectar sus herramientas y automatizar la preparación de reportes.",
+        outcome:
+          "Información reunida para revisar productos y ventas con menos trabajo manual.",
       },
       {
         icon: "layers",
         title: "Herramientas que trabajan juntas",
-        description:
-          "Conecta aplicaciones y sincroniza información para evitar ingresar lo mismo en varios lugares.",
+        before:
+          "Un negocio ingresa los mismos pedidos en distintas aplicaciones.",
+        solution:
+          "Integrar las herramientas para compartir y sincronizar información.",
+        outcome:
+          "Registros actualizados sin volver a ingresar lo mismo en cada sistema.",
       },
       {
         icon: "code",
         title: "Aplicaciones a tu medida",
-        description:
-          "Convierte un problema específico en una herramienta digital que se adapte a tu forma de trabajar.",
+        before:
+          "Una organización recibe solicitudes por mensajes y pierde de vista su avance.",
+        solution:
+          "Una aplicación a medida para registrar solicitudes y seguir su estado.",
+        outcome:
+          "Un punto de seguimiento compartido y más claridad sobre lo pendiente.",
       },
     ],
   },
@@ -248,6 +269,11 @@ const es = {
     eyebrow: "EL CRITERIO DETRÁS DEL CÓDIGO",
     title: "La mejor tecnología es",
     accent: "la que te sirve.",
+    story: [
+      "NERQIA es una empresa chilena de tecnología e innovación. Elegimos un nombre con personalidad, no un acrónimo: representa nuestra forma de unir ingeniería, inteligencia y creatividad.",
+      "Transformamos ideas y necesidades en posibilidades reales. Acortamos la distancia entre lo que imaginas y una solución útil, sólida y con valor real.",
+      "Construimos para personas y organizaciones y aspiramos a crear productos y plataformas propios, desde Chile para el mundo.",
+    ],
     items: [
       {
         title: "Simplicidad con intención",
@@ -277,9 +303,11 @@ const es = {
     accent: "quieres resolver.",
     description:
       "Una tarea que se repite. Un sistema que no conversa con otro. Una idea por construir. Empecemos por ahí.",
-    action: "Hablemos de tu proyecto",
+    orientation:
+      "No necesitas saber cómo resolverlo. Podemos descubrirlo juntos.",
+    action: "Cuéntanos tu idea",
     hint: "Abre tu aplicación de correo. También puedes escribirnos directamente.",
-    subject: "Mi proyecto con NERQIA",
+    subject: "Mi idea o consulta con NERQIA",
     form: {
       title: "Preparemos tu mensaje",
       intro:
@@ -287,7 +315,7 @@ const es = {
       name: "Nombre",
       email: "Correo electrónico",
       need: "¿Qué necesitas?",
-      message: "Cuéntanos brevemente el problema",
+      message: "Cuéntanos qué te gustaría mejorar",
       required: "Todos los campos son obligatorios.",
       select: "Selecciona una opción",
       options: [
@@ -304,7 +332,8 @@ const es = {
         },
         { value: "other", label: "Necesito orientación" },
       ],
-      placeholder: "¿Qué haces hoy y qué te gustaría simplificar?",
+      placeholder:
+        "Puede ser algo que te quita tiempo, una idea o una duda. No necesitas usar términos técnicos.",
       prepare: "Revisar mi borrador",
       preview: "Tu borrador, listo para revisar",
       previewHint:
@@ -327,7 +356,8 @@ const es = {
         name: "Escribe tu nombre (hasta 80 caracteres).",
         email: "Escribe un correo válido (hasta 254 caracteres).",
         need: "Selecciona el tipo de necesidad.",
-        message: "Describe el problema en entre 10 y 1000 caracteres.",
+        message:
+          "Escribe entre 10 y 1000 caracteres sobre lo que te gustaría mejorar.",
       },
     },
   },
@@ -336,6 +366,13 @@ const es = {
     privacy: "Privacidad",
     top: "Volver al inicio",
     note: "Tecnología que trabaja para ti.",
+    follow: "Síguenos y conoce nuestras ideas, proyectos y novedades.",
+    socialNav: "Redes sociales de NERQIA",
+    socialNames: {
+      instagram: "Instagram de NERQIA",
+      facebook: "Página de Facebook de NERQIA",
+      tiktok: "TikTok de NERQIA",
+    },
   },
   privacy: {
     title: "Tu privacidad, en simple.",
@@ -361,7 +398,7 @@ const en: Translation<typeof es> = {
   seo: {
     title: "NERQIA | Technology that works for you",
     description:
-      "Custom software, automation, data and artificial intelligence. NERQIA builds practical solutions for people, businesses and organizations.",
+      "Chilean technology and innovation company. Custom software, automation, data and artificial intelligence for individuals, businesses and organizations.",
   },
   skip: "Skip to content",
   navLabel: "Main navigation",
@@ -376,7 +413,7 @@ const en: Translation<typeof es> = {
     { id: "innovacion", label: "Innovation" },
   ],
   talk: "Let’s talk",
-  contactSubject: "Let’s talk about my project | NERQIA",
+  contactSubject: "Let’s talk about my idea or question | NERQIA",
   hero: {
     eyebrow: "ENGINEERING WITH PURPOSE",
     first: "Technology",
@@ -385,7 +422,7 @@ const en: Translation<typeof es> = {
     description:
       "We build software, connect tools and automate tasks for people and businesses. Technology and artificial intelligence applied to what you need to solve.",
     primary: "Explore solutions",
-    secondary: "Let’s discuss your project",
+    secondary: "Tell us what’s on your mind",
     foot: "From the first challenge to the next possibility.",
     graphic: ["DATA", "PROCESSES", "INTELLIGENCE", "SOLUTIONS"],
     graphicFoot: "Connect. Simplify. Move forward.",
@@ -435,32 +472,51 @@ const en: Translation<typeof es> = {
     title: "Solutions you can",
     accent: "picture working.",
     intro:
-      "These are examples of what we can build for your needs, not projects already delivered.",
-    cta: "Let’s discuss your needs",
+      "These are examples of what we could build for your situation, not projects already delivered.",
+    cta: "Let’s discuss your situation",
+    labels: {
+      before: "Before",
+      solution: "Possible solution",
+      outcome: "Expected outcome",
+    },
     items: [
       {
         icon: "spark",
         title: "Automatic alerts and notifications",
-        description:
-          "Get a notification when something relevant happens: a change, a deadline or a process needing attention.",
+        before:
+          "An independent professional tracks dates, tasks and requests across messages and notes.",
+        solution:
+          "A simple tracking tool with alerts for things that need attention.",
+        outcome:
+          "Timely reminders and an organized record of what is still pending.",
       },
       {
         icon: "flow",
-        title: "Reports without repetitive work",
-        description:
-          "Bring together, process and update information to prepare reports with less manual effort.",
+        title: "Reports and spreadsheets without repeated work",
+        before:
+          "A bookshop checks sales and stock across its sales system and several spreadsheets.",
+        solution: "Connect its tools and automate report preparation.",
+        outcome:
+          "Information in one place to review products and sales with less manual work.",
       },
       {
         icon: "layers",
         title: "Tools that work together",
-        description:
-          "Connect applications and synchronize information so you do not have to enter it in several places.",
+        before:
+          "A business enters the same orders into different applications.",
+        solution: "Integrate the tools to share and synchronize information.",
+        outcome:
+          "Updated records without entering the same details into every system.",
       },
       {
         icon: "code",
         title: "Applications built around you",
-        description:
-          "Turn a specific problem into a digital tool that fits the way you work.",
+        before:
+          "An organization receives requests through messages and loses track of their progress.",
+        solution:
+          "A tailored application to record requests and track their status.",
+        outcome:
+          "A shared place to follow progress and a clearer view of what is pending.",
       },
     ],
   },
@@ -601,6 +657,11 @@ const en: Translation<typeof es> = {
     eyebrow: "THE THINKING BEHIND THE CODE",
     title: "The best technology",
     accent: "is useful to you.",
+    story: [
+      "NERQIA is a Chilean technology and innovation company. We chose a distinctive name, rather than an acronym: it represents how we bring engineering, intelligence and creativity together.",
+      "We turn ideas and needs into real possibilities. We bridge the gap between what you imagine and a useful, sound solution that creates real value.",
+      "We build for individuals and organizations, and aspire to create products and platforms of our own, from Chile to the world.",
+    ],
     items: [
       {
         title: "Intentional simplicity",
@@ -630,9 +691,11 @@ const en: Translation<typeof es> = {
     accent: "you want to solve.",
     description:
       "A repetitive task. Systems that do not connect. An idea waiting to be built. Let’s start there.",
-    action: "Let’s discuss your project",
+    orientation:
+      "You don’t need to know how to solve it. We can figure it out together.",
+    action: "Tell us what’s on your mind",
     hint: "Opens your email application. You can also email us directly.",
-    subject: "My project with NERQIA",
+    subject: "My idea or question for NERQIA",
     form: {
       title: "Let’s prepare your message",
       intro:
@@ -640,7 +703,7 @@ const en: Translation<typeof es> = {
       name: "Name",
       email: "Email address",
       need: "What do you need?",
-      message: "Briefly describe the problem",
+      message: "Tell us what you would like to improve",
       required: "All fields are required.",
       select: "Select an option",
       options: [
@@ -654,7 +717,8 @@ const en: Translation<typeof es> = {
         },
         { value: "other", label: "I need guidance" },
       ],
-      placeholder: "What do you do today, and what would you like to simplify?",
+      placeholder:
+        "It could be something that takes up your time, an idea or a question. No technical terms needed.",
       prepare: "Review my draft",
       preview: "Your draft, ready to review",
       previewHint:
@@ -678,7 +742,8 @@ const en: Translation<typeof es> = {
         name: "Enter your name (up to 80 characters).",
         email: "Enter a valid email address (up to 254 characters).",
         need: "Select the type of request.",
-        message: "Describe the problem in 10 to 1000 characters.",
+        message:
+          "Tell us what you would like to improve in 10 to 1000 characters.",
       },
     },
   },
@@ -687,6 +752,13 @@ const en: Translation<typeof es> = {
     privacy: "Privacy",
     top: "Back to top",
     note: "Technology that works for you.",
+    follow: "Follow our ideas, projects and news.",
+    socialNav: "NERQIA social profiles",
+    socialNames: {
+      instagram: "NERQIA on Instagram",
+      facebook: "NERQIA Facebook page",
+      tiktok: "NERQIA on TikTok",
+    },
   },
   privacy: {
     title: "Your privacy, simply put.",
