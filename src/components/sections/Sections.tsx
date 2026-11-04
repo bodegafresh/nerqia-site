@@ -246,7 +246,14 @@ export function Why({ text }: { text: Copy }) {
   return (
     <section className="section why" aria-labelledby="why-title">
       <div className="container why-layout">
-        <SectionHeading id="why-title" {...text.why} />
+        <div>
+          <SectionHeading id="why-title" {...text.why} />
+          <div className="brand-story">
+            {text.why.story.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
+        </div>
         <div className="why-grid">
           {text.why.items.map((item) => (
             <article key={item.title}>
@@ -276,6 +283,7 @@ export function Contact({ text }: { text: Copy }) {
             <span>{text.contact.accent}</span>
           </h2>
           <p>{text.contact.description}</p>
+          <p className="contact-orientation">{text.contact.orientation}</p>
           <p className="contact-hint">{text.contact.hint}</p>
           <a
             href={getContactHref(text.contactSubject)}

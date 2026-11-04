@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { Icon } from "../ui/Icon";
 import { BrandLogo } from "../ui/BrandLogo";
+import { SocialIcon } from "../ui/SocialIcon";
 import { site, getContactHref } from "../../config/site";
 import type { Copy } from "../../content/copy";
 export function Footer({
@@ -37,17 +38,23 @@ export function Footer({
           </a>
         </div>
         {site.socials.length > 0 && (
-          <div className="socials">
-            {site.socials.map((social) => (
-              <a
-                key={social.href}
-                href={social.href}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {social.label}
-              </a>
-            ))}
+          <div className="footer-socials">
+            <p>{text.footer.follow}</p>
+            <nav className="socials" aria-label={text.footer.socialNav}>
+              {site.socials.map((social) => (
+                <a
+                  key={social.id}
+                  className="social-link"
+                  href={social.href}
+                  aria-label={text.footer.socialNames[social.id]}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <SocialIcon platform={social.id} />
+                  <span>{social.label}</span>
+                </a>
+              ))}
+            </nav>
           </div>
         )}
         <div className="footer-bottom">
